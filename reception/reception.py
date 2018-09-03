@@ -20,14 +20,14 @@ class Register_checker():
             self.vip_file.close()
 
         for name in self.ordinary_list:
-            if vistor in name:
+            if vistor.lower() in name.lower():
                 print(name.strip('\n')  + ", ORDINARY")
                 self.payed_List.append(vistor)
             else:
                 pass
 
         for name in self.vip_list:
-            if vistor in name:
+            if vistor.lower() in name.lower():
                 print(name.strip('\n') + ", VIP")
                 self.payed_List.append(vistor)
             else:
