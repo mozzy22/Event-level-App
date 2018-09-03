@@ -96,6 +96,7 @@ p{
  
   #left {
       float: left;
+      width:36.5%;
   }
 
 
@@ -106,8 +107,8 @@ p{
   }
 
   #image2 {
-    height :300px;
-    width:500px;
+    height :50%;
+    width:100%;
 }
 
 
@@ -126,14 +127,14 @@ p{
         display:none;
     }
     #image1 {
-        height :200px;
-        width:200px;
+        height :50%;
+        width:100%;
     }
     #left {
         margin-top:0px;
         height:40%;
-        width:50%;
-        margin-left:200px;
+        width:100%;
+        /* margin-left:200px; */
         
     }
 
@@ -166,23 +167,23 @@ p{
 
     #form {
         text-align:center; 
-        width:60%;
+        width:100%;
         margin-top:200px;
         background-color:blanchedalmond;
-        margin-left:40px;
+        margin-left:0px;
        
     }
  
 
       #left {
         margin:0px;
-        width: 120px; 
-        margin-right: 40px;
+        width: 100%; 
+
        
       }
       #image1 {
-        height :300%;
-        width:300%;
+        height :15%;
+        width:100%;
         margin-right: 0px;
     }
     .topnav a {
