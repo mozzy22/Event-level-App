@@ -23,14 +23,17 @@ class Register:
 
 
 
+
     def register_guest(self,first_name, second_name, email):
         "A function that takes user details and adds it to the list"
 
-        if self.validate_empty_names(first_name, second_name):
+        if first_name and second_name:
+            self.first_name = first_name
+            self.second_name = second_name
             self.validate_email(email)
 
-        else :
-            print("Empty names , Plaase eneter name!!!")
+        else:
+            print("Empty names , Please enter name!!!")
 
         if self.email:
             self.guest_details = {
@@ -38,7 +41,8 @@ class Register:
                 "first_name" : self.first_name,
                 "second_name": self.second_name,
                 "email": self.email  }
-
+            self.guest_list.append(self.guest_details)
+            print("new user details  >>" + str(self.guest_details))
         else:
             print ("ivalid/empty email, please Enter valid email !!!")
 
@@ -58,7 +62,7 @@ class Register:
             for detail in self.guest_list:
                 print(detail.strip("\n"))
             old_list.close()
-
+            print("\n .....................")
 
     def validate_email(self,email):
         "function to verify email"
@@ -70,13 +74,8 @@ class Register:
             self.email = email
             return True
 
-    def validate_empty_names(self, first_name, second_name):
-        if first_name and second_name:
-            self.first_name = first_name
-            self.second_name = second_name
-            return True
-        else:
-            return False
+    def clear_file_content(self):
+        open('regestry.txt', "w").close()
 
 
 if __name__ == "__main__":
@@ -85,6 +84,7 @@ if __name__ == "__main__":
     second_name = input("Enter second name:")
     email = input("Enter emal:")
     Reg.read_file()
+    Reg.print_current_list()
     Reg.register_guest(first_name,second_name,email)
     Reg.write_to_file()
-    Reg.print_current_list()
+
