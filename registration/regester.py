@@ -13,16 +13,13 @@ class Register:
         self.email = ""
         self.id = 0
 
+
     def read_file(self):
         # reading a file text to the list
         with open('regestry.txt', 'r') as old_list:
             self.guest_list = old_list.readlines()
             self.id = len(self.guest_list)
             old_list.close()
-
-
-
-
 
     def register_guest(self,first_name, second_name, email):
         "A function that takes user details and adds it to the list"
@@ -75,6 +72,7 @@ class Register:
             return True
 
     def clear_file_content(self):
+        "A function to clear the text file"
         open('regestry.txt', "w").close()
 
 
