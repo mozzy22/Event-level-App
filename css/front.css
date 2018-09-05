@@ -6,14 +6,19 @@ body {
   
 
 #form {
-    margin-left:600px;
-    width:30%;
+    margin-left:55%;
+    width:400px;
     margin-top:70px;
     border-style: solid;
     border-color: black;
     border-radius:0.3rem;
     border-width:1px;
-    text-align:center; 
+    text-align:center;
+   
+}
+#formA {
+
+   width:100%;
    
 }
 
@@ -64,6 +69,7 @@ p{
     text-align: center;
     display: inline-block;
     font-size: 16px;
+    margin-left: 30%;
 
 
 }
@@ -134,7 +140,7 @@ p{
         margin-top:0px;
         height:40%;
         width:100%;
-        /* margin-left:200px; */
+      
         
     }
 
