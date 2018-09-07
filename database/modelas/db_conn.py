@@ -5,6 +5,7 @@ class Db_conn :
     def create_connection(self):
         "A function to set up database connection"
         self.conn = psycopg2.connect(database = "Events_Db", user = "moses", password = "moses", host = "127.0.0.1", port = "5432")
+        return self.conn
 
 
 
@@ -45,7 +46,8 @@ class Db_conn :
                             user_id    INT    references Users(user_id) NOT NULL,
                             event_id   INT     references Event(event_id) NOT NULL,
                             is_valid   BOOLEAN , 
-                            location   TEXT  ); ''')
+                            verification_code   UUID NOT NULL ,
+                            created_at  DATE  ); ''')
         print("Table ticket created successfully")
 
 
@@ -55,10 +57,10 @@ class Db_conn :
 
 
 
-if __name__ == '__main__':
-    db = Db_conn()
-    db.create_connection()
-    db.create_users_table()
-    db.create_events_table()
-    db.create_ticket_table()
-    db.close_DB()
+# if __name__ == '__main__':
+#         db = Db_conn()
+#         db.create_connection()
+# #       db.create_users_table()
+# #       db.create_events_table()
+#         db.create_ticket_table()
+#         db.close_DB()
