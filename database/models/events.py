@@ -1,4 +1,4 @@
-from db_conn import Db_conn
+from db_conn import DbConn
 
 class Event:
     "A class to describe the model event"
@@ -7,7 +7,7 @@ class Event:
         self.event_name = ""
         self.price = ""
         self.location  = ""
-        self.conn = Db_conn()
+        self.conn = DbConn()
 
     def add_event(self,event_name, price, location):
         conn = self.conn.create_connection()

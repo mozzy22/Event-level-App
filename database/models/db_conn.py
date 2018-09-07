@@ -1,6 +1,6 @@
 import psycopg2
 
-class Db_conn :
+class DbConn :
 
     def create_connection(self):
         "A function to set up database connection"
@@ -15,8 +15,8 @@ class Db_conn :
 
         cur.execute('''CREATE TABLE IF NOT EXISTS Users
               (user_id  SERIAL PRIMARY KEY  NOT NULL  ,
-              first_name   TEXT   NOT NULL,
-              last_name  TEXT NOT NULL,
+              first_name   TEXT   NOT NULL UNIQUE,
+              last_name  TEXT NOT NULL UNIQUE,
                age     TEXT NOT NULL,
                email     TEXT NOT NULL ,
                password   TEXT NOT NULL,
@@ -30,7 +30,7 @@ class Db_conn :
 
         cur.execute('''CREATE TABLE IF NOT EXISTS Event
                      (event_id  SERIAL PRIMARY KEY    NOT NULL ,
-                      event_name    TEXT    NOT NULL,
+                      event_name    TEXT    NOT NULL UNIQUE,
                       price  MONEY NOT NULL,
                       location   TEXT NOT NULL ); ''')
         print("Table events created successfully")
@@ -57,10 +57,10 @@ class Db_conn :
 
 
 
-# if __name__ == '__main__':
-#         db = Db_conn()
-#         db.create_connection()
-# #       db.create_users_table()
-# #       db.create_events_table()
-#         db.create_ticket_table()
-#         db.close_DB()
+if __name__ == '__main__':
+        db = DbConn()
+        db.create_connection()
+        db.create_users_table()
+        db.create_events_table()
+        db.create_ticket_table()
+        db.close_DB()

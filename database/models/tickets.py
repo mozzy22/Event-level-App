@@ -1,6 +1,6 @@
 import uuid
 import datetime
-from db_conn import Db_conn
+from db_conn import DbConn
 
 class Ticket():
     "A class to Manipulate tickets"
@@ -11,7 +11,7 @@ class Ticket():
         self.is_valid = True
         self.varification_code = None
         self.created_at = None
-        self.conn = Db_conn()
+        self.conn = DbConn()
 
 
     def add_ticket(self, user_id, event_id, is_valid ):

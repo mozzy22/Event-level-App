@@ -1,5 +1,5 @@
 import datetime
-from db_conn import Db_conn
+from db_conn import DbConn
 
 class User:
 
@@ -10,7 +10,7 @@ class User:
         self.email =""
         self.password = ""
         self.created_at = None
-        self.conn = Db_conn()
+        self.conn = DbConn()
 
 
 
