@@ -14,6 +14,7 @@ user_obj = Users()
 #Geta all users
 @My_app.route('/api/get-users', methods=['GET'])
 def get_all_users():
+    " A function to get all users"
     if user_obj.return_users():
         return jsonify(user_obj.return_users())
     else:
@@ -22,6 +23,7 @@ def get_all_users():
 
 @My_app.route("/api/add-user", methods=['POST'])
 def add_user():
+    "A function to add a user"
     bol = True
     if request.data:
         user_details= request.json
@@ -31,13 +33,11 @@ def add_user():
             user_location = user_details['user_location']
             user_age = user_details['user_age']
             for user in user_obj.users_list:
-                # if len(user_obj.users_list)== 0:
-                #     bol = True
+
                 if user["user_name"] == user_name:
                     bol = False
                 else :
                     bol = True
-
 
             if bol:
                 user_obj.add_user(user_name, user_pasword, user_location, user_age)
@@ -45,7 +45,6 @@ def add_user():
             else :
                 message = {"ERROR": "user name already exists, please try another name"}
                 return jsonify(message)
-
 
         else :
             return jsonify({"invalid user_object format": "Please Post a valid user object "})
@@ -55,6 +54,7 @@ def add_user():
 
 @My_app.route("/api/delete/<user_id>", methods=['DELETE'])
 def delete_user(user_id):
+    "A function to delete a user"
     message = {}
     del_user = {}
     for user in user_obj.users_list:
