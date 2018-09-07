@@ -11,6 +11,7 @@ class Ticket():
         self.is_valid = True
         self.varification_code = None
         self.created_at = None
+        self.ticket_id = 0
         self.conn = DbConn()
 
 
@@ -37,10 +38,29 @@ class Ticket():
 
 
 
-    def update_ticket(self, user_id, event_id, bol):
+    def update_ticket(self, ticket_id, user_id, event_id, bol):
+        conn = self.conn.create_connection()
         self.user_id = user_id
         self.event_id = event_id
-        self.event_id = bol
+        self.created_at = datetime.date.today()
+        self.ticket_id = ticket_id
+        self.is_valid = bol
+
+        cur = conn.cursor()
+
+        sql = """UPDATE Tcket  SET user_id = '{u_id}' ,event_id = '{e_id}', is_valid = '{bol}', 
+                       created_at ='{date}'  WHERE ticket_id = '{t_id}' ;"""
+
+        sql_command = sql.format(u_id = self.user_id, e_id = self.event_id, bol = self.is_valid  ,
+                                 date =self.created_at, t_id = self.ticket_id  )
+
+
+        cur.execute(sql_command)
+        conn.commit()
+        conn.close()
+
+
+
 
     def get_ticket(self,user_id,event_id ):
         self.user_id = user_id
@@ -51,4 +71,5 @@ class Ticket():
 
 if __name__ == "__main__":
     ticket = Ticket()
-    ticket.add_ticket(1,1,True)
+   # ticket.add_ticket(1,1,True)
+    ticket.update_ticket(3,1,1,False)
