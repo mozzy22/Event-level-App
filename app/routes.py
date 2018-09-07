@@ -16,9 +16,9 @@ user_obj = Users()
 def get_all_users():
     " A function to get all users"
     if user_obj.return_users():
-        return jsonify(user_obj.return_users())
+        return jsonify(user_obj.return_users()), 200
     else:
-        return jsonify ({"Empty user list" : "Please add user"})
+        return jsonify ({"Empty user list" : "Please add user"}), 404
 
 
 @My_app.route("/api/add-user", methods=['POST'])
@@ -41,15 +41,15 @@ def add_user():
 
             if bol:
                 user_obj.add_user(user_name, user_pasword, user_location, user_age)
-                return jsonify(user_obj.users_list)
+                return jsonify(user_obj.users_list), 201
             else :
                 message = {"ERROR": "user name already exists, please try another name"}
-                return jsonify(message)
+                return jsonify(message), 409
 
         else :
-            return jsonify({"invalid user_object format": "Please Post a valid user object "})
+            return jsonify({"invalid user_object format": "Please Post a valid user object "}),409
     else :
-        return jsonify({"Empty user object": "Please Post user details "})
+        return jsonify({"Empty user object": "Please Post user details "}), 404
 
 
 @My_app.route("/api/delete/<user_id>", methods=['DELETE'])
@@ -66,9 +66,9 @@ def delete_user(user_id):
 
     if del_user:
          user_obj.delete_user(del_user)
-         return jsonify(user_obj.users_list)
+         return jsonify(user_obj.users_list), 200
     else:
-         return jsonify(message)
+         return jsonify(message) ,404
 
 
 
