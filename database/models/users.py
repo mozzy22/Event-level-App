@@ -10,6 +10,7 @@ class User:
         self.age  = 0
         self.email =""
         self.password = ""
+        self.user_id = 0
         self.created_at = None
         self.conn = DbConn()
 
@@ -84,8 +85,40 @@ class User:
          #return User()
          print(user)
 
+    def get_user_event(self, user_id):
+
+        conn = self.conn.create_connection()
+        self.user_id =user_id
+        cur = conn.cursor()
+
+        sql = """SELECT * FROM Tcket WHERE user_id = '{u_id}' ;"""
+        sql_command = sql.format(u_id=self.user_id)
+
+        cur.execute(sql_command)
+        rows = cur.fetchall()
+        user = {}
+        for row in rows:
+            user = {
+                "ticket_id": row[0],
+                " user_id": row[1],
+                "event_id": row[2],
+                "is_valid": row[3],
+                " verification_code": row[4],
+                " date_created": row[5],
+
+            }
+
+
+        conn.commit()
+        conn.close()
+        # return User()
+        print(user)
+
+
+
 if __name__ == "__main__":
     user = User()
     #user.add_user("mutesa" ,"moese" ,22, "email", "333")
     #user.update_user("mutesa", "moefjfjfjfse", 2233, "emailupdated", "333update")
-    user.get_user("dd")
+    #user.get_user("dd")
+    user.get_user_event(1)
