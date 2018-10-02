@@ -1,4 +1,10 @@
 
+.idea/
+database/modelas/__pycache__/
+database/models/__pycache__/db_conn.cpython-37.pyc
+database/models/__pycache__/db_conn.cpython-37.pyc
+app/
+
 
 # C extensions
 *.so
@@ -77,3 +83,4 @@ venv.bak/
 
 .idea/vcs.xml/
 .idea/inspectionProfiles/Project_Default.xml/
+
